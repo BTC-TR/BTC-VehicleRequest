@@ -1,0 +1,21 @@
+<core:FragmentDefinition xmlns:core="sap.ui.core" xmlns:f="sap.ui.layout.from" xmlns="sap.m">
+	<Dialog 
+		afterClose="destroyDialog" 
+		id="idAnketOlusturDialog" 
+		title=""
+		contentWidth="40%"
+		>
+		<content>
+			<Image	
+				id="imageDialog"	
+				class="sapUiLargeMargin"
+				width="100%" 
+				>
+									
+		    </Image>
+		</content>
+		<beginButton>
+			<Button text="Tamam" press="onImageKapat" type="Accept"/>
+		</beginButton>
+	</Dialog>
+</core:FragmentDefinition>

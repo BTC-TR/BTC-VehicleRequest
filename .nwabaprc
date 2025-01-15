@@ -1,0 +1,22 @@
+ 
+{
+    "base": "./dist", 
+
+    "conn_usestrictssl" : false, 
+
+    "conn_server": "http://btcfioridev.btctrbasis.local",
+
+    "conn_client" : "100", 
+
+    "conn_user": "tkeskinel",
+
+    "conn_password": "Btc!2345",
+
+    "abap_package": "ZFIORI",
+
+    "abap_bsp": "ZMB_ARAC_TALEP",
+
+    "abap_bsp_text": "Araç talep uygulaması",
+    
+    "abap_transport" : "BGDK901888"
+} 

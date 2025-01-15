@@ -1,0 +1,106 @@
+{
+    "resources": [
+        {
+            "name": "manifest.json"
+        },
+        {
+            "name": "localService/metadata.xml"
+        },
+        {
+            "name": "localService/mockserver.js"
+        },
+        {
+            "name": "Component-preload.js",
+            "merged": true
+        },
+        {
+            "name": "Component.js"
+        },
+        {
+            "name": "fragments/PypSelectDialog.fragment.xml"
+        },
+        {
+            "name": "fragments/ImageShow.fragment.xml"
+        },
+        {
+            "name": "fragments/TalepIptalDialog.fragment.xml"
+        },
+        {
+            "name": "neo-app.json"
+        },
+        {
+            "name": "controller/TalepOnay.controller.js"
+        },
+        {
+            "name": "controller/Taleplerim.controller.js"
+        },
+        {
+            "name": "controller/NotFound.controller.js"
+        },
+        {
+            "name": "controller/FotografYukle.controller.js"
+        },
+        {
+            "name": "controller/TalepFormu.controller.js"
+        },
+        {
+            "name": "controller/BaseController.js"
+        },
+        {
+            "name": "controller/ErrorHandler.js"
+        },
+        {
+            "name": "controller/App.controller.js"
+        },
+        {
+            "name": "controller/Main.controller.js"
+        },
+        {
+            "name": ".project.json"
+        },
+        {
+            "name": "view/Main.view.xml"
+        },
+        {
+            "name": "view/TalepOnay.view.xml"
+        },
+        {
+            "name": "view/FotografYukle.view.xml"
+        },
+        {
+            "name": "view/Taleplerim.view.xml"
+        },
+        {
+            "name": "view/TalepFormu.view.xml"
+        },
+        {
+            "name": "view/NotFound.view.xml"
+        },
+        {
+            "name": "view/App.view.xml"
+        },
+        {
+            "name": "i18n/i18n.properties",
+            "raw": "i18n/i18n.properties"
+        },
+        {
+            "name": "model/models.js"
+        },
+        {
+            "name": "model/formatter.js"
+        },
+        {
+            "name": ".user.project.json"
+        },
+        {
+            "name": "resources.json",
+            "merged": true
+        },
+        {
+            "name": "css/style.css"
+        },
+        {
+            "name": "index.html"
+        }
+    ]
+}

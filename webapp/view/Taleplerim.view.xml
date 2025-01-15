@@ -1,0 +1,241 @@
+<mvc:View xmlns:c="sap.ui.core" 
+		  xmlns:mvc="sap.ui.core.mvc" 
+		  xmlns:f="sap.ui.layout.form" 
+		  xmlns:u="sap.ui.unified"
+		  xmlns="sap.m" 
+		  xmlns:tnt="sap.tnt"
+		  controllerName="com.btc.arachavuztalep.controller.Taleplerim" 
+		  xmlns:html="http://www.w3.org/1999/xhtml" 
+		  xmlns:l="sap.ui.layout"
+		  xmlns:custom="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1" 
+		  xmlns:t="sap.ui.table">
+	<Page title="Taleplerim" navButtonPress="onBack" showNavButton="false">
+	<SplitContainer id="SplitContDemo1" initialDetail="idDetailPage1" initialMaster="master22">
+		<detailPages>
+			<Page id="idDetailPage1" showHeader="true" enableScrolling="true" 
+				class="sapUiContentPadding" 
+				navButtonPress="onBackDetailToMaster" showNavButton="{device>/system/phone}">
+				<content>
+					
+					<Panel class="sapUiMediumMarginTop">
+						<VBox class="sapUiSmallMargin">
+							<f:SimpleForm id="SimpleFormToolbar2" 
+										  title="" 
+										  editable="false" 
+										  layout="ResponsiveGridLayout" 
+										  labelSpanXL="5" 
+										  labelSpanL="5" 
+										  labelSpanM="12"
+									   	  labelSpanS="12" 
+									   	  adjustLabelSpan="false" 
+									   	  emptySpanXL="0" 
+									   	  emptySpanL="0" 
+									   	  emptySpanM="0" 
+									   	  emptySpanS="0" 
+									   	  columnsXL="2" 
+									   	  columnsL="2" 
+									   	  columnsM="1"
+										  SingleContainerFullSize="false" 
+										  ariaLabelledBy="Title1">
+								<f:content>
+									<c:Title text="Kişisel Bilgiler"/>
+									<Label text="Onay Durum"/>
+									<c:Icon src="{ path: 'OnayModel>/OnayDurum', formatter: '.formatter.IconFormat'}" width="20px"/>
+									<Label text="Proje Yöneticisi Onay"/>
+									<c:Icon src="{ path: 'OnayModel>/OnayMudur', formatter: '.formatter.IconFormat'}" width="20px"/>
+									<Label text="Aracı Kullanacak Personel Sicil No"/>
+									<Text text="{OnayModel>/SicilNo}" wrapping="false"/>
+									<Label text="Talep Numarası"/>
+									<Text text="{OnayModel>/TalepNo}" wrapping="false"/>
+									<Label text="Adı Soyadı"/>
+									<Text text="{OnayModel>/AdSoyad}" wrapping="false"/>
+									<Label text="Cep Telefon"/>
+									<Text text="{OnayModel>/TelefonNo}"/>
+									
+									<Label text="Proje Adı"/>
+									<Text text="{OnayModel>/ProjeAdi}"/>
+									<Label text="Proje Yöneticisi"/>
+									<Text text="{OnayModel>/ProjeYoneticisi}"/>
+									<c:Title text="Talep Bilgileri"/>
+									<Label text="Çıkış Tarihi"/>
+									<Text text="{ path: 'OnayModel>/CikisTarih',formatter : '.formatter.formatDateddmmyyyy'}" wrapping="false"/>
+									<Label text="Çıkış Saati"/>
+									<Text text="{ path: 'OnayModel>/CikisSaat', formatter: '.formatter.saatFormatter'}" wrapping="false"/>
+									<Label text="Dönüş Tarihi"/>
+									<Text text="{ path: 'OnayModel>/DonusTarih', formatter : '.formatter.formatDateddmmyyyy'}" wrapping="false"/>
+									<Label text="Dönüş Saati"/>
+									<Text text="{ path: 'OnayModel>/DonusSaat', formatter: '.formatter.saatFormatter'}" wrapping="false"/>
+									<Label text="Seyahat Yeri"/>
+									<Text text="{OnayModel>/SeyahatYeri}" wrapping="false"/>
+									<Label text="Potansiyel Müşteri"></Label>
+									<Text text="{OnayModel>/PotansiyelMusteri}" wrapping="false"></Text>
+									<Label text="Red Nedeni" visible="{ path:'OnayModel>/OnayMudur', formatter: '.formatter.RedFormat'}"/>
+									<Text text="{OnayModel>/SirketNotu}" wrapping="false" visible="{ path:'OnayModel>/OnayMudur', formatter: '.formatter.RedFormat'}"/>
+								</f:content>
+							</f:SimpleForm>
+						</VBox>
+					</Panel>
+					<Panel class="sapUiMediumMarginTop"  visible="{path: 'OnayMudur', formatter: '.formatter.teslimBtn'}">
+						<VBox class="sapUiSmallMargin">
+							<f:SimpleForm id="SimpleFormToolbar3" 
+										  title="" 
+										  editable="true" 
+										  layout="ResponsiveGridLayout" 
+										  labelSpanXL="5" 
+										  labelSpanL="5" 
+										  labelSpanM="12"
+									   	  labelSpanS="12" 
+									   	  adjustLabelSpan="false"
+									   	  emptySpanXL="4" 
+									   	  emptySpanL="4" 
+									   	  emptySpanM="0" 
+									   	  emptySpanS="0" 
+									   	  columnsXL="1" 
+									   	  columnsL="1" 
+									   	  columnsM="1"
+										  SingleContainerFullSize="false" 
+										  ariaLabelledBy="Title1">
+								<f:content>
+									<c:Title text="Araç İade"/>	
+									<Label text="Atanan Araç"/>
+									<Text text="{OnayModel>/AracPlaka}"  />
+								<!--	<Label text="Araç Son Kilometresi"/>
+									<Text text ="{kmModel>/SonKm}"/>-->
+									<Label text="Araç Alış Kilometresi"/>
+									<Input id="ilkKmId" value="{path: 'kmModel>/SonKm'}" enabled="{path: 'SonKm', formatter: '.formatter.kmEnabledFormat'}" maxLength="5" type="Number"  />
+									<Label text="Araç iade Kilometresi"/>
+									<Input id="sonKmId" value="{path: 'OnayModel>/SonKm'}" enabled="{path: 'SonKm', formatter: '.formatter.kmEnabledFormat'}" maxLength="5" type="Number" /><!--, formatter: '.formatter.kmFormatter'-->
+									
+									<Label text="Not:"/>
+									<Input id="notId" value="{OnayModel>/PersonelNotu}" enabled="{parts:['OnayMudur', 'SonKm'], formatter: '.formatter.iadeFormatter' }" />
+								</f:content>
+							</f:SimpleForm>
+						</VBox>
+					</Panel>
+					<Panel class="sapUiMediumMarginTop" visible="{path: 'OnayMudur', formatter: '.formatter.teslimBtn'}" >
+						<headerToolbar>
+							<Toolbar height="2rem">
+								<Title text="Araç Fotoğrafı Yükle"/>
+							</Toolbar>
+						</headerToolbar>
+						<!--<l:VerticalLayout>-->
+						<FlexBox  width="100%" justifyContent="Center" alignContent="Center" alignItems="Center" wrap="Wrap">
+							<VBox>
+								<u:FileUploader 
+										multiple="true"
+										id="fileUploader" 
+										name="myFileUpload" 
+										uploadUrl="/sap/opu/odata/sap/ZMB_ARAC_TALEP_SRV/AracTalepSet(TalepNo='{OnayModel>/TalepNo}',SicilNo='{OnayModel>/SicilNo}')/TalepToAttach" 
+										tooltip="Upload your file to the local server"
+										change="handleValueChange" 
+										typeMissmatch="handleTypeMissmatch" 
+										style="Emphasized" 
+										useMultipart="false" 
+										uploadOnChange="false"
+										sendXHR="true"
+										uploadComplete="onUploadComplete"
+										uploadAborted="onUploadAborted"
+								        uploadStart="onUploadStart" 
+										placeholder="Fotoğraf seçiniz..."><!-- fileType="png,jpg,jpeg "-->
+									
+									
+									<u:parameters>
+										<u:FileUploaderParameter name="param1" value="Foo"/>
+										<u:FileUploaderParameter name="param2" value="bar"/>
+									</u:parameters>
+									<u:headerParameters>
+										<u:FileUploaderParameter name="headerParam1" value="Foo"/>
+										<u:FileUploaderParameter name="headerParam2" value="bar"/>
+									</u:headerParameters>
+								</u:FileUploader>
+								<Button id="dosyaYukleId" text="Fotoğraf Yükle" press="handleUploadPress" enabled="{parts:['OnayMudur', 'AracTeslim'], formatter: '.formatter.teslimBtn2' }"/>
+							</VBox>
+						</FlexBox>
+						<!--</l:VerticalLayout>-->
+					</Panel>
+					<Panel class="sapUiMediumMarginTop"  visible="{path: 'OnayMudur', formatter: '.formatter.teslimBtn'}">
+						<!--<ScrollContainer
+							height="100%"
+							width="100%"
+							horizontal="true"
+							vertical="true"
+							focusable="true">-->
+							<FlexBox width="100%" justifyContent="Center" alignContent="Center" alignItems="Center" wrap="Wrap"
+								class="circle"
+								id="idHBoxPhotos"
+								items="{ path : 'TalepToAttach', sorter: { path: 'Docid'} }">
+								<VBox class="sapUiSmallMargin">
+									<c:Icon
+										src="sap-icon://sys-cancel-2"
+										class="1rem"
+										color="#DF0101" 
+										visible= "{path: 'OnayModel>/AracTeslim', formatter: '.formatter.photoDeleteIcon'}"
+										press="onPressedImageDelete"><!--press=""-->
+										<c:layoutData>
+											<FlexItemData growFactor="1" />
+										</c:layoutData>
+									</c:Icon>
+									<Image
+										src= "/sap/opu/odata/sap/ZMB_ARAC_TALEP_SRV/AttachmentSet('{Docid}')/$value" 
+										press= "imagePressed"
+										width="100px" 
+										height="100px">
+									</Image>
+								</VBox>
+							</FlexBox>
+						<!--</ScrollContainer>-->
+					</Panel>
+				</content>
+				<footer>
+			<Toolbar>
+				<ToolbarSpacer/>
+				<Button id="kaydetTeslimButonID" text="Kaydet ve Teslim Et" type="Accept" press="teslimButtonPressed" enabled="{parts:['OnayMudur', 'AracTeslim'], formatter: '.formatter.teslimBtn2' }"/>
+				<Button id="talepIptalButonID" text="Talep İptal" type="Reject" press="talepIptalPressed" enabled="{parts:['OnayMudur', 'AracTeslim'], formatter: '.formatter.iptalBtn' }" />
+				
+			</Toolbar>
+		</footer>
+			</Page>
+		</detailPages>
+		<masterPages>
+			<Page id="master22" title="Talepler" icon="sap-icon://action" class="sapUiStdPage"
+				navButtonPress="onBack" showNavButton="true">
+				<headerContent>	<!--<SearchField search="onSearch" placeholder="Talep No"></SearchField>--> </headerContent> 
+				<subHeader>
+					<Toolbar>
+						<SearchField search="onSearch" placeholder="Talep No"></SearchField>
+					</Toolbar>
+				</subHeader>
+				<content>
+					<List id="list22" updateFinished="onUpdateFinishedList" itemPress="onListItemPress" 
+					items="{ 
+						path : '/AracTalepSet', 
+						sorter: { path: 'TalepNo'}, 
+						filters: [{
+				            path: 'IpUygulama',
+				            operator: 'EQ',
+				            value1: 'T'
+				        }]
+					}">
+						<ObjectListItem title="{path: 'TalepNo', formatter: '.formatter.talepNoFormat'}" type="Active">
+							<attributes>
+								<ObjectAttribute text="{AdSoyad}"/>
+								<ObjectAttribute text="{path: 'OnayDurum', formatter: '.formatter.sirketOnayDurum'}"/>
+								<ObjectAttribute text="{path: 'OnayMudur', formatter: '.formatter.pyOnayDurum'}"/>
+								<ObjectAttribute text="{SicilNo}"/>
+							</attributes>
+							<firstStatus>
+								<ObjectStatus text="{ path: 'CikisTarih', formatter : '.formatter.formatDateddmmyyyy'}"/>
+							</firstStatus>
+						</ObjectListItem>
+					</List>
+				</content>
+				<footer>
+			<Toolbar>
+				<ToolbarSpacer/>
+			</Toolbar>
+		</footer>
+			</Page>
+		</masterPages>
+	</SplitContainer>
+	</Page>
+</mvc:View>

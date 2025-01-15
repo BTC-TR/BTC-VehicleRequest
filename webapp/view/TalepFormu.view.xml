@@ -1,0 +1,83 @@
+<mvc:View xmlns:core="sap.ui.core" xmlns:f="sap.ui.layout.form" xmlns:l="sap.ui.layout" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m"
+	xmlns:html="http://www.w3.org/1999/xhtml" controllerName="com.btc.arachavuztalep.controller.TalepFormu">
+	<Page title="Talep Formu" navButtonPress="onBack" showNavButton="true">
+		<content>
+			<Panel width="auto" class="sapUiResponsiveMargin">
+				<headerToolbar>
+					<Toolbar height="2rem">
+						<Title text="Kişisel Bilgiler"/>
+					</Toolbar>
+				</headerToolbar>
+				<content>
+					<f:SimpleForm id="SimpleFormToolbar" editable="true" layout="ResponsiveGridLayout" labelSpanXL="5" labelSpanL="5" labelSpanM="4"
+						labelSpanS="12" adjustLabelSpan="false" emptySpanXL="4" emptySpanL="4" emptySpanM="0" emptySpanS="0" columnsXL="2" columnsL="2" columnsM="1"
+						ariaLabelledBy="Title1">
+						<f:content>
+							<Label text="Aracı Kullanacak Personel Sicil No"/>
+							<Input type="Number" maxLength="8" id="idsicilno" enabled="false" value="{kisiModel>/Sicilno}"/>
+							<Label text="Adı Soyadı"/>
+							<Input id="idadsoyad" enabled="false" value="{kisiModel>/Ad} {kisiModel>/Soyad}"/>
+							<Label text="Cep Telefon"/>
+							<Input enabled="false" value="{kisiModel>/Tel}"/>
+							<Label text="Talep Eden Bölüm"/>
+							<Input enabled="false" value="{kisiModel>/Bolum}"/>
+							<Label text="Proje Adı"/>
+							<Input id="idpyp" value="{yeniTalepModel>/ProjeAdi}" required="true" enabled="false"/>
+							<Label text="Proje Yöneticisi"/>
+							<Input id="idpy" value="{yeniTalepModel>/ProjeYoneticisi}" required="true" enabled="false"/>
+							<Label text=""/>
+							<Input id="idpysicil" value="{yeniTalepModel>/PySicil}" visible="false" enabled="false"/>
+							<Label text=""/>
+							<Button text="Proje Arama" type="Accept" press="onSearchPyp"></Button>
+						</f:content>
+					</f:SimpleForm>
+				</content>
+			</Panel>
+			<Panel width="auto" class="sapUiResponsiveMargin">
+				<headerToolbar>
+					<Toolbar height="2rem">
+						<Title text="Talep Detayları"/>
+					</Toolbar>
+				</headerToolbar>
+				<content>
+					<f:SimpleForm id="SimpleFormToolbar22" editable="true" layout="ResponsiveGridLayout" labelSpanXL="5" labelSpanL="5" labelSpanM="4"
+						labelSpanS="12" adjustLabelSpan="false" emptySpanXL="4" emptySpanL="4" emptySpanM="0" emptySpanS="0" columnsXL="2" columnsL="2" columnsM="1"
+						ariaLabelledBy="Title1">
+						<Label id="cikistarihi" text="Görev Çıkış Tarihi "/>
+						<DatePicker required="true" id="DP1" placeholder="Tarih Giriniz..." dateValue="{yeniTalepModel>/CikisTarih}" change="handleChange"
+							class="sapUiSmallMarginBottom"/>
+						<TimePicker required="true" id="TP1" visible="true" valueFormat="HH:mm" value="09:00" displayFormat="HH:mm" change="handleChange"
+							placeholder="Saati Giriniz...">
+							<layoutData>
+								<l:GridData span="XL1 L1 M3 S4"/>
+							</layoutData>
+						</TimePicker>
+						<Label id="donustarihi" text="Görev Dönüş Tarihi "/>
+						<DatePicker id="DP2" required="true" placeholder="Tarih Giriniz..." dateValue="{yeniTalepModel>/DonusTarih}" change="handleChange"
+							class="sapUiSmallMarginBottom"/>
+						<TimePicker required="true" visible="true" id="TP2" valueFormat="HH:mm" value="18:00" displayFormat="HH:mm" change="handleChange"
+							placeholder="Saati Giriniz...">
+							<layoutData>
+								<l:GridData span="XL1 L1 M3 S4"/>
+							</layoutData>
+						</TimePicker>
+						<Label text="Seyahat Yeri"/>
+						<Input value="{yeniTalepModel>/SeyahatYeri}" required="true"/>
+						<Label text="Potansiyel Müşteri" visible="{musteriVisibilityModel>/MusteriVisibility}" required="{musteriVisibilityModel>/MusteriVisibility}"></Label>
+						<Input value="{yeniTalepModel>/PotansiyelMusteri}" visible="{musteriVisibilityModel>/MusteriVisibility}"/>
+					</f:SimpleForm>
+				</content>
+			</Panel>
+		</content>
+		<footer>
+			<OverflowToolbar id="otbFooter">
+				<ToolbarSpacer/>
+				<Button type="Accept" text="Talebi Tamamla" press="onTalebiTamamlaPressed">
+					<layoutData>
+						<OverflowToolbarLayoutData priority="NeverOverflow"/>
+					</layoutData>
+				</Button>
+			</OverflowToolbar>
+		</footer>
+	</Page>
+</mvc:View>

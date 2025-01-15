@@ -1,0 +1,41 @@
+<core:FragmentDefinition xmlns:core="sap.ui.core" xmlns:f="sap.ui.layout.from" xmlns="sap.m">
+<TableSelectDialog
+		noDataText="No Products Found"
+		title="Proje Arama"
+		search="handleSearch"
+		confirm="handleClose"
+		cancel="handleClose"
+		items="{pypModel>/}">
+		<ColumnListItem>
+			<cells>
+				<ObjectIdentifier
+					text="{pypModel>Objnr}" />
+				<Text text="{pypModel>ProjeAdi}" />
+				<Text text="{pypModel>ProjeYoneticisi}" />
+				
+			</cells>
+		</ColumnListItem>
+		<columns>
+			<Column width="12em">
+				<header>
+					<Text text="PYP Numarası" />
+				</header>
+			</Column>
+			<Column
+				minScreenWidth="Tablet"
+				demandPopin="true" >
+				<header>
+					<Text text="Proje Adı" />
+				</header>
+			</Column>
+			<Column
+				minScreenWidth="Desktop"
+				demandPopin="true"
+				hAlign="End">
+				<header>
+					<Text text="Proje Yöneticisi" />
+				</header>
+			</Column>
+		</columns>
+	</TableSelectDialog>
+</core:FragmentDefinition>

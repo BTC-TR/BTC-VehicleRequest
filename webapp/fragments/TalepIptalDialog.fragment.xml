@@ -1,0 +1,14 @@
+<core:FragmentDefinition xmlns:core="sap.ui.core" xmlns:f="sap.ui.layout.from" xmlns="sap.m">
+	<Dialog afterClose="destroyDialog" id="idAnketOlusturDialog" title="Not">
+		<content>
+			
+			<Text text="Talebi iptal etmek istediğinizden emin misiniz?"></Text>
+		</content>
+		<beginButton>
+			<Button text="Evet" press="onRedNotu" type="Accept"/>
+		</beginButton>
+		<endButton>
+			<Button text="Vazgeç" press="onCancelPressed" type="Reject"/>
+		</endButton>
+	</Dialog>
+</core:FragmentDefinition>

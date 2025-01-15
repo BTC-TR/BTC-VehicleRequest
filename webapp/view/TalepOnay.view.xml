@@ -1,0 +1,238 @@
+<mvc:View xmlns:c="sap.ui.core" 
+		  xmlns:mvc="sap.ui.core.mvc" 
+		  xmlns="sap.m" 
+		  controllerName="com.btc.arachavuztalep.controller.TalepOnay"
+		  xmlns:html="http://www.w3.org/1999/xhtml" 
+		  xmlns:custom="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1"
+		  xmlns:t="sap.ui.table">
+	<Page title="Onay" navButtonPress="onBack" showNavButton="true">
+	<SplitContainer id="SplitContDemo" initialDetail="idDetailPage" initialMaster="master2">
+		<masterPages>
+			<Page id="master2" title="Talepler" icon="sap-icon://action" class="sapUiStdPage">
+				<content>
+					<List id="listTalep" itemPress="onListItemPress" items="{ path : '/AracTalepSet'}">
+						<headerToolbar>
+							<Toolbar>
+								<Button text="TÜm Talepler" type="Accept" press="onTumTaleplerPressed"/>
+								<SearchField search="onSearch" placeholder="Talep No"> </SearchField>
+							</Toolbar>
+						</headerToolbar>
+					
+							<ObjectListItem title="{ path: 'TalepNo', formatter: '.formatter.talepNoFormat'}" type="Active">
+								<attributes>
+								<ObjectAttribute text="{AdSoyad}"/>
+								<ObjectAttribute text="{path: 'Durum', formatter: '.formatter.OnayDurum'}"/>
+								<ObjectAttribute text="{SicilNo}"/>
+							</attributes>
+							<firstStatus>
+								<ObjectStatus text="{ path: 'CikisTarih', type: 'sap.ui.model.type.Date', formatOptions: { pattern: 'dd.MM.YYYY' }}"/>
+							</firstStatus>
+							</ObjectListItem>
+					</List>
+				</content>
+			</Page>
+		</masterPages>
+		<detailPages id="idDetailPage">
+			<Page showHeader="false" enableScrolling="false" class="sapUiContentPadding" >
+				<content>
+					<t:Table id="table1" 
+							 rows="{TalepModel>/}" 
+							 rowHeight="20px" 
+							 title="Talep Onay" 
+							 selectionMode="Single" 
+							 minAutoRowCount="1"
+							 visibleRowCount="7"  
+							 showNoData="false" 
+							 visible="false">
+						<t:columns>
+							<t:Column sortProperty="OnayDurum" id="drm" width="5rem">
+								<Label text="Durum"/>
+								<t:template>
+									<c:Icon src="{ path: 'TalepModel>OnayDurum', formatter: '.formatter.IconFormat'}"
+											backgroundColor="{ path: 'TalepModel>OnayDurum', formatter: '.formatter.IconCFormat'}" 
+											width="75px" 
+											height="75px"/>
+								</t:template>
+							</t:Column>
+							<t:Column sortProperty="TalepNo" width="6rem">
+								<Label text="Talep No"/>
+								<t:template>
+									<Text text="{TalepModel>TalepNo}" wrapping="false"/>
+								</t:template>
+							</t:Column>
+							<t:Column width="6rem">
+								<Label text="Sicil No"/>
+								<t:template>
+									<Text text="{TalepModel>SicilNo}" wrapping="false"/>
+								</t:template>
+							</t:Column>
+							<t:Column width="7rem">
+								<Label text="Adı Soyadı"/>
+								<t:template>
+									<Text text="{TalepModel>AdSoyad}" wrapping="false"/>
+								</t:template>
+							</t:Column>
+							<t:Column width="8rem">
+								<Label text="Telefon No"/>
+								<t:template>
+									<Text text="{TalepModel>TelefonNo}" wrapping="false"/>
+								</t:template>
+							</t:Column>
+							<t:Column width="9rem">
+								<Label text="Mail"/>
+								<t:template>
+									<Text text="{TalepModel>Mail}" wrapping="false"/>
+								</t:template>
+							</t:Column>
+							<t:Column width="6rem">
+								<Label text="Departman"/>
+								<t:template>
+									<Text text="{TalepModel>Departman}" wrapping="false"/>
+								</t:template>
+							</t:Column>
+							<t:Column width="9rem" >
+								<Label text="Talep Eden Bölüm Müdürü"/>
+								<t:template>
+									<Text text="{TalepModel>Mudur}" wrapping="true"/>
+								</t:template>
+							</t:Column>
+							<t:Column width="6rem">
+								<Label text="Şirket Adı"/>
+								<t:template>
+									<Text text="{TalepModel>SirketAdi}" wrapping="false"/>
+								</t:template>
+							</t:Column>
+							<t:Column width="6rem">
+								<Label text="Src Belgesi"/>
+								<t:template>
+									<Text text="{ path: 'TalepModel>SrcBelge', formatter: '.formatter.SrcDurum'}" wrapping="false"/>
+								</t:template>
+							</t:Column>
+							<t:Column width="6rem">
+								<Label text="Ehliyet No"/>
+								<t:template>
+									<Text text="{TalepModel>EhliyetNo}" wrapping="false"/>
+								</t:template>
+							</t:Column>
+							<t:Column width="6rem">
+								<Label text="Talep Edilen Araç Tipi"/>
+								<t:template>
+								  	<Text text="{TalepModel>TalepAracTipi}" wrapping="false"/>
+								</t:template>
+							</t:Column>
+							<t:Column width="6rem">
+								<Label text="Talep Neden"/>
+								<t:template>
+									<Text text="{TalepModel>TalepNeden}" wrapping="false"/>
+								</t:template>
+							</t:Column>
+							<t:Column width="7rem">
+								<Label text="Çıkış Tarihi"/>
+								<t:template>
+									<Text text="{ path: 'TalepModel>CikisTarih', type: 'sap.ui.model.type.Date', formatOptions: { pattern: 'dd.MM.YYYY' }}" wrapping="false"/>
+								</t:template>
+							</t:Column>
+							<t:Column width="7rem">
+								<Label text="Çıkış Saat"/>
+								<t:template>
+									<Text text="{ path: 'TalepModel>CikisSaat', formatter: '.formatter.saatFormatter'}" wrapping="false"/>
+								</t:template>
+							</t:Column>
+							<t:Column width="7rem">
+								<Label text="Dönüş Tarihi"/>
+								<t:template>
+									<Text text="{ path: 'TalepModel>DonusTarih', type: 'sap.ui.model.type.Date', formatOptions: { pattern: 'dd.MM.YYYY' }}" wrapping="false"/>
+								</t:template>
+							</t:Column>
+							<t:Column width="7rem">
+								<Label text="Dönüş Saati"/>
+								<t:template>
+									<Text text="{ path: 'TalepModel>DonusSaat', formatter: '.formatter.saatFormatter'}" wrapping="false"/>
+								</t:template>
+							</t:Column>
+							<t:Column width="6rem">
+								<Label text="Seyahat Yeri"/>
+								<t:template>
+									<Text text="{TalepModel>SeyahatYeri}" wrapping="false"/>
+								</t:template>
+							</t:Column>
+							<t:Column width="8rem">
+								<Label text="Yolcu1"/>
+								<t:template>
+									<Text text="{TalepModel>Yolcu1}" wrapping="false"/>
+								</t:template>
+							</t:Column>
+							<t:Column width="8rem">
+								<Label text="Yolcu2"/>
+								<t:template>
+									<Text text="{TalepModel>Yolcu2}" wrapping="false"/>
+								</t:template>
+							</t:Column>
+							<t:Column width="8rem">
+								<Label text="Yolcu3"/>
+								<t:template>
+									<Text text="{TalepModel>Yolcu3}" wrapping="false"/>
+								</t:template>
+							</t:Column>
+							<t:Column width="8rem">
+								<Label text="Yolcu4"/>
+								<t:template>
+									<Text text="{TalepModel>Yolcu4}" wrapping="false"/>
+								</t:template>
+							</t:Column>
+							<t:Column width="8rem">
+								<Label text="Durum"/>
+								<t:template>
+									<ComboBox id="cbADurum" items="{oAppModel>/aracDurum}" selectedKey="{TalepModel>Durum}" enabled= "{ path: 'TalepModel>OnayDurum', formatter: '.formatter.kaydetbuttonVisible'}">
+										<items>
+											<c:Item key="{oAppModel>key}" text="{oAppModel>text}"/>
+										</items>
+									</ComboBox>
+								</t:template>
+							</t:Column>
+							<t:Column width="9rem">
+								<Label text="Araç Tipi"/>
+								<t:template>
+									<ComboBox id="cbATip" items="{oAppModel>/aracTipi}" selectedKey="{TalepModel>AracTipi}" enabled= "{ path: 'TalepModel>OnayDurum', formatter: '.formatter.kaydetbuttonVisible'}">
+										<items>
+											<c:Item key="{oAppModel>key}" text="{oAppModel>text}"/>
+										</items>
+									</ComboBox>
+								</t:template>
+							</t:Column>
+							<t:Column width="9rem">
+								<Label text="Araç Plaka"/>
+								<t:template>
+									<ComboBox id="cbAPlaka" items="{oAppModel>/aracPlaka}" selectedKey="{TalepModel>AracPlaka}" enabled= "{ path: 'TalepModel>OnayDurum', formatter: '.formatter.kaydetbuttonVisible'}">
+										<items>
+											<c:Item key="{oAppModel>key}" text="{oAppModel>text}"/>
+										</items>
+									</ComboBox>
+								</t:template>
+							</t:Column>
+							<t:Column width="7rem">
+								<Label text="Onay Durumu"/>
+								<t:template>
+									<Text text="{ path: 'TalepModel>OnayDurum', formatter: '.formatter.OnayDurum'}" wrapping="false"/>
+								</t:template>
+							</t:Column>
+							<t:Column width="9rem">
+								<Label text=""/>
+								<t:template>
+									<Button text="Kaydet ve Onayla" press="kaydetPressed" type="Accept" enabled= "{ path: 'TalepModel>OnayDurum', formatter: '.formatter.kaydetbuttonVisible'}" />
+								</t:template>
+							</t:Column>
+							<t:Column width="7rem">
+								<Label text=""/>
+								<t:template>
+									<Button text="Reddet" press="reddetPressed" type="Reject" enabled= "{ path: 'TalepModel>OnayDurum', formatter: '.formatter.reddetbuttonVisible'}"/>
+								</t:template>
+							</t:Column>
+						</t:columns>
+					</t:Table>
+				</content>
+			</Page>
+		</detailPages>
+	</SplitContainer>
+	</Page>
+</mvc:View>

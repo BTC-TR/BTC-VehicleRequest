@@ -1,0 +1,11 @@
+.Label1 {
+	background-color:red;
+	color:white;
+	
+	margin: auto;
+    width: 20%;
+}
+
+.circle .sapMImg {
+	border-radius: 50% !important;
+}

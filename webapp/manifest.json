@@ -1,0 +1,180 @@
+{
+    "_version": "1.4.0",
+    "sap.app": {
+        "id": "com.btc.arachavuztalep",
+        "type": "application",
+        "i18n": "i18n/i18n.properties",
+        "title": "{{appTitle}}",
+        "description": "{{appDescription}}",
+        "applicationVersion": {
+            "version": "1.0.0"
+        },
+        "dataSources": {
+            "mainService": {
+                "uri": "/sap/opu/odata/sap/ZMB_ARAC_TALEP_SRV/",
+                "type": "OData",
+                "settings": {
+                    "odataVersion": "2.0",
+                    "localUri": "localService/metadata.xml"
+                }
+            }
+        },
+        "sourceTemplate": {
+            "id": "sap.ui.ui5-template-plugin.1worklist",
+            "version": "1.38.3",
+            "toolsId": "26eda03f-18d0-40e9-9fb5-446e0638d5aa"
+        }
+    },
+    "sap.ui": {
+        "technology": "UI5",
+        "icons": {
+            "icon": "sap-icon://task",
+            "favIcon": "",
+            "phone": "",
+            "phone@2": "",
+            "tablet": "",
+            "tablet@2": ""
+        },
+        "deviceTypes": {
+            "desktop": true,
+            "tablet": true,
+            "phone": true
+        },
+        "supportedThemes": [
+            "sap_hcb",
+            "sap_bluecrystal"
+        ]
+    },
+    "sap.ui5": {
+        "rootView": {
+            "viewName": "com.btc.arachavuztalep.view.App",
+            "type": "XML",
+            "id": "app"
+        },
+        "dependencies": {
+            "minUI5Version": "1.38.0",
+            "libs": {
+                "sap.ui.core": {
+                    "minVersion": "1.38.0"
+                },
+                "sap.m": {
+                    "minVersion": "1.38.0"
+                }
+            }
+        },
+        "contentDensities": {
+            "compact": true,
+            "cozy": true
+        },
+        "models": {
+            "i18n": {
+                "type": "sap.ui.model.resource.ResourceModel",
+                "settings": {
+                    "bundleName": "com.btc.arachavuztalep.i18n.i18n"
+                }
+            },
+            "": {
+                "dataSource": "mainService",
+                "preload": true,
+                "settings": {
+                    "defaultBindingMode": "",
+                    "defaultOperationMode": "",
+                    "defaultCountMode": ""
+                }
+            }
+        },
+        "config": {
+            "fullWidth": true
+        },
+        "routing": {
+            "config": {
+                "routerClass": "sap.m.routing.Router",
+                "viewType": "XML",
+                "viewPath": "com.btc.arachavuztalep.view",
+                "controlId": "app",
+                "controlAggregation": "pages",
+                "bypassed": {
+                    "target": [
+                        "notFound"
+                    ]
+                },
+                "async": true
+            },
+            "routes": [
+                {
+                    "pattern": "",
+                    "name": "Main",
+                    "target": [
+                        "main"
+                    ]
+                },
+                {
+                    "pattern": "TalepFormu",
+                    "name": "TalepFormu",
+                    "target": [
+                        "talepFormu"
+                    ]
+                },
+                {
+                    "pattern": "TalepOnay/{Talepno}",
+                    "name": "TalepOnay",
+                    "target": [
+                        "talepOnay"
+                    ]
+                },
+                {
+                    "pattern": "Taleplerim",
+                    "name": "Taleplerim",
+                    "target": [
+                        "taleplerim"
+                    ]
+                },
+                {
+                    "pattern": "FotografYukle",
+                    "name": "FotografYukle",
+                    "target": [
+                        "FotografYukle"
+                    ]
+                }
+            ],
+            "targets": {
+                "main": {
+                    "viewName": "Main",
+                    "viewLevel": 1
+                },
+                "notFound": {
+                    "viewName": "NotFound",
+                    "viewId": "notFound"
+                },
+                "talepFormu": {
+                    "viewName": "TalepFormu",
+                    "viewLevel": 2,
+                    "transition": "flip"
+                },
+                "talepOnay": {
+                    "viewName": "TalepOnay",
+                    "viewLevel": 2
+                },
+                "taleplerim": {
+                    "viewName": "Taleplerim",
+                    "viewLevel": 2
+                },
+                "FotografYukle": {
+                    "viewName": "FotografYukle",
+                    "viewLevel": 2
+                }
+            },
+            "resources": {
+                "css": [
+                    {
+                        "uri": "css/style.css"
+                    }
+                ]
+            }
+        }
+    },
+    "sap.platform.abap": {
+        "uri": "/sap/bc/ui5_ui5/sap/zmb_arac_talep",
+        "_version": "1.1.0"
+    }
+}
