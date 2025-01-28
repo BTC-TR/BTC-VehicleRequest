@@ -85,15 +85,15 @@ sap.ui.define([
 					text: 'Otomobil',
 					key: 'Otomobil'
 				}, {
-					text: 'Minib�s',
-					key: 'Minib�s'
+					text: 'Minibüs',
+					key: 'Minibüs'
 				}],
 				aracDurum: [{
 					key: 'Uygun',
 					text: 'Uygun'
 				}, {
-					key: 'G�revde',
-					text: 'G�revde'
+					key: 'Görevde',
+					text: 'Görevde'
 				}],
 				srcBelgesi: [{
 					text: 'Var'
@@ -288,7 +288,7 @@ sap.ui.define([
 				//_this.getView().byId("idHBoxPhotos").getBinding("items").refresh(true);
 				//onayModel.updateBindings(true);
 				//onayModel.refresh(true);
-				MessageToast.show("Ara� teslim edildi...");
+				MessageToast.show("Araç teslim edildi...");
 			};
 			mParameters.error = function(oError) {
 				sap.ui.core.BusyIndicator.hide();
@@ -300,10 +300,10 @@ sap.ui.define([
 				MessageToast.show("�lk Kilometre bilgisini girmelisiniz.");
 			}  */
 			if (oOnayModel.SonKm === "" || oOnayModel.SonKm === "00000") {
-				MessageToast.show("�ade Km bilgisini girmelisiniz.");
+				MessageToast.show("İade Km bilgisini girmelisiniz.");
 			}
 			if (oOnayModel.SonKm <= kmModelData.SonKm) {
-				MessageToast.show("Son kilometre ilk kilometreden b�y�k olmal�.");
+				MessageToast.show("Son kilometre ilk kilometreden büyük olmalı.");
 
 			} else {
 				var photos = this.getView().byId("idHBoxPhotos").getBinding("items").aKeys.length;
@@ -321,7 +321,7 @@ sap.ui.define([
 					sap.ui.core.BusyIndicator.show();
 				}
 				else{
-					MessageToast.show("Foto�raf y�klemeden arac� teslim edemezsiniz!");
+					MessageToast.show("Fotoğraf yüklemeden aracç teslim edemezsiniz!");
 				}
 				
 			}
@@ -340,11 +340,11 @@ sap.ui.define([
 			var p = this.byId("cbADurum3").getValue();
 
 			if (d == "") {
-				MessageToast.show("Onaylama ekran�n� doldurmal�s�n�z");
+				MessageToast.show("Onaylama ekranını doldurmalısınız");
 			} else if (d == "Uygun") {
-				MessageToast.show("Durumu 'Uygun' se�ip reddemezsiniz. G�revde se�melisiniz.");
+				MessageToast.show("Durumu 'Uygun' seçip reddemezsiniz. Görevde seçmelisiniz.");
 			} else if (t || p) {
-				MessageToast.show("Ara� Tipi ve Plaka atamas� yap�p reddemezsiniz.");
+				MessageToast.show("Araç Tipi ve Plaka ataması yapıp reddemezsiniz.");
 			} else {
 
 				mParameters.success = function(oData, oResponce) {
@@ -352,7 +352,7 @@ sap.ui.define([
 					oView.updateBindings(true);
 					onayModel.updateBindings(true);
 					onayModel.refresh(true);
-					MessageToast.show("Ba�ar�l�");
+					MessageToast.show("Başarılı");
 				};
 				mParameters.error = function(oError) {
 					MessageToast.show(oError);
@@ -377,16 +377,16 @@ sap.ui.define([
 			var p = this.byId("cbADurum3").getValue();
 
 			if (d == "" || t == "" || p == "") {
-				MessageToast.show("Onaylama ekran�n� doldurmal�s�n�z");
-			} else if (d == "G�revde") {
-				MessageToast.show("Durumu 'G�revde' se�ip onaylayamazs�n�z. Uygun se�melisiniz.");
+				MessageToast.show("Onaylama ekranını doldurmalısınız");
+			} else if (d == "Görevde") {
+				MessageToast.show("Durumu 'Görevde' seçip onaylayamazsınız. Uygun seçmelisiniz.");
 			} else {
 				mParameters.success = function(oResponce) {
 					oOnayModel.OnayDurum = "O";
 					oModel.updateBindings(true);
 					onayModel.updateBindings(true);
 					onayModel.refresh(true);
-					MessageToast.show("Ba�ar�l�");
+					MessageToast.show("Başarılı");
 				};
 				mParameters.error = function(oError) {
 					MessageToast.show(oError);
@@ -405,7 +405,7 @@ sap.ui.define([
 			sap.m.MessageBox.show(
 				"Emin misiniz?", {
 					icon: sap.m.MessageBox.Icon.INFORMATION,
-					title: "Talep �ptal",
+					title: "Talep İptal",
 					actions: [sap.m.MessageBox.Action.YES, sap.m.MessageBox.Action.NO],
 					onClose: function(oAction) {
 						if (oAction === sap.m.MessageBox.Action.YES) {
@@ -433,7 +433,7 @@ sap.ui.define([
 				oModel.updateBindings(true);
 				onayModel.updateBindings(true);
 				onayModel.refresh(true);*/
-				MessageToast.show("Talebiniz iptal edilmi�tir");
+				MessageToast.show("Talebiniz iptal edilmiştir");
 			};
 			mParameters.error = function(oError) {
 				MessageToast.show(oError);
@@ -513,7 +513,7 @@ sap.ui.define([
 			this._busyDialog.close();
 			var sResponse = oEvent.getParameter("response");
 			if (sResponse) {
-				sap.m.MessageToast.show("Y�kleme i�lemi tamamland�");
+				sap.m.MessageToast.show("Yükleme işlemi tamamlandı");
 			}
 			var oFileUploader = this.byId("fileUploader");
 			oFileUploader.removeAllHeaderParameters();
@@ -527,7 +527,7 @@ sap.ui.define([
 		},
 		onUploadAborted: function(oEvent) {
 			this._busyDialog.close();
-			sap.m.MessageToast.show("Y�kleme ��lemi Aborted");
+			sap.m.MessageToast.show("Yükleme İşlemi Aborted");
 		},
 
 		onPressedImageDelete: function(oEvent) {
@@ -538,11 +538,11 @@ sap.ui.define([
 			var oDataModel = this.getModel();
 			oDataModel.remove(sPath, {
 				success: function(oData, oResponse) {
-					sap.m.MessageToast.show("Foto�raf silindi.");
+					sap.m.MessageToast.show("Fotoğraf silindi.");
 				},
 
 				error: function(oError) {
-					sap.m.MessageToast.show("Silme i�lemi s�ras�nda hata olu�tu.");
+					sap.m.MessageToast.show("Silme işlemi sırasında hata oluştu.");
 				}
 			});
 
